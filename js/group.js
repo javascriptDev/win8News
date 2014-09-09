@@ -33,7 +33,7 @@ Group.prototype = {
         this.el.appendChild(this.content);
 
         this.data.splice(0, 12).forEach(function (item) {
-            var mp = new MagneticPost(item);
+            var mp = new MagneticPost(item, me.name);
             me.item.push(mp);
             me.content.appendChild(mp.el);
         })
@@ -54,7 +54,7 @@ Group.prototype = {
     addMore: function () {
         this.more = util.createEl('div', {
             className: 'x-g-more',
-            innerHTML:'get more ...'
+            innerHTML: 'get more ...'
         })
         this.el.appendChild(this.more);
     }

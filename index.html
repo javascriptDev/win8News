@@ -26,10 +26,22 @@
 
 	setTimeout(function () {
 		addCss('.x-group', '-webkit-transform:scale(1) !important');
-
 		p.enter();
 	}, 1000);
 
+
+	document.body.onclick = function (e) {
+		if (e.target.className.indexOf('x-mp') != -1) {
+			var gp = e.target.group;
+			var p1 = new Page();
+			p1.add(new Group(gp, d[gp], p1));
+			p.out();
+			setTimeout(function () {
+				p1.enter();
+
+			}, 200)
+		}
+	}
 
 	addCss();
 	function data(groupCount, dataPerGroup) {
