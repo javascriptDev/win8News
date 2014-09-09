@@ -13,7 +13,6 @@
 </head>
 <body>
 <script>
-
 	var p = new Page('asdasd');
 	var d = data(10, 30);
 
@@ -29,17 +28,16 @@
 		p.enter();
 	}, 1000);
 
-
 	document.body.onclick = function (e) {
 		if (e.target.className.indexOf('x-mp') != -1) {
-			var gp = e.target.group;
-			var p1 = new Page();
-			p1.add(new Group(gp, d[gp], p1));
-			p.out();
-			setTimeout(function () {
-				p1.enter();
-
-			}, 200)
+			p.out(function () {
+				var gp = e.target.group;
+				p = new Page();
+				p.add(new Group(gp, d[gp], p));
+				setTimeout(function () {
+					p.enter();
+				}, 100)
+			});
 		}
 	}
 
@@ -58,13 +56,10 @@
 		}
 		return o;
 	}
-
-
 	function addCss(selector, content) {
 		var css = document.createElement('style');
 		css.type = 'text/css';
 		css.rel = 'stylesheet';
-
 		var text = selector + '{' + content + ' }';
 		if (css.styleSheet) css.styleSheet.cssText = text;
 		else css.appendChild(document.createTextNode(text));

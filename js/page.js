@@ -22,10 +22,18 @@ Page.prototype = {
         this.el.style.right = '0px';
 //        this.el.style.webkitTransform = 'rotateZ(360deg)';
     },
-    out: function () {
+    out: function (fn) {
         var width = window.screen.availWidth;
-        this.el.style.right = width + 'px';
+        var me = this;
+//        this.el.style.right = width + 'px';
+        this.el.style.webkitTransform = 'rotateY(180deg)';
+        me.el.style.opacity = 0;
 
+        var o = function (e) {
+            fn && fn();
+            me.el.removeEventListener('webkitTransitionEnd', o);
+        }
+        this.el.addEventListener('webkitTransitionEnd', o)
     },
     update: function () {
         var me = this;
