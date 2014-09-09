@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="js/util.js"></script>
+	<script src="js/magneticPost.js"></script>
+	<script src="js/group.js"></script>
+	<script src="js/page.js"></script>
+
+
+	<link href="page.css" rel="stylesheet">
+</head>
+<body>
+<script>
+
+	var p = new Page('asdasd');
+	var d = data(10, 30);
+
+	Object.keys(d).forEach(function (group) {
+		var groupName = group,
+				items = d[group];
+		var g = new Group(group, items, p);
+		p.add(g);
+	})
+
+	setTimeout(function () {
+		addCss('.x-group', '-webkit-transform:scale(1) !important');
+
+		p.enter();
+	}, 1000);
+
+
+	addCss();
+	function data(groupCount, dataPerGroup) {
+		var o = {};
+		for (var i = 0; i < groupCount; i++) {
+			var d = [];
+			for (var j = 0; j < dataPerGroup; j++) {
+				d.push({
+					title: 'news' + j,
+					content: 'news ' + j + 'contentsadasdasd'
+				})
+			}
+			o['p' + i] = d;
+		}
+		return o;
+	}
+
+
+	function addCss(selector, content) {
+		var css = document.createElement('style');
+		css.type = 'text/css';
+		css.rel = 'stylesheet';
+
+		var text = selector + '{' + content + ' }';
+		if (css.styleSheet) css.styleSheet.cssText = text;
+		else css.appendChild(document.createTextNode(text));
+		document.head.appendChild(css);
+	}
+</script>
+</body>
+</html>
