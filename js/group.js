@@ -44,11 +44,9 @@ Group.prototype = {
         var me = this;
 //        console.log(this.pager.groups);
         this.pager.groups.forEach(function (group) {
-            console.log(parseInt(group.el.offsetWidth));
             left += parseInt(group.el.offsetWidth);
         })
         left += this.pager.groups.length * 20;
-
         return left;
     },
     addMore: function () {

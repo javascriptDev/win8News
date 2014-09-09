@@ -26,7 +26,7 @@ Page.prototype = {
         var width = window.screen.availWidth;
         var me = this;
 //        this.el.style.right = width + 'px';
-        this.el.style.webkitTransform = 'rotateY(180deg)';
+        this.el.style.webkitTransform = 'scale(0)';
         me.el.style.opacity = 0;
 
         var o = function (e) {
